@@ -6,7 +6,7 @@ from Lab import Lab
 from Tile import Tile
 
 
-#Initializes tiles with weights and types
+# Initializes tiles with weights and types
 def labinit(h=11, w=None, start=None):
 
     if w is None:
@@ -17,6 +17,7 @@ def labinit(h=11, w=None, start=None):
 
     tiles = []
 
+    # Create a weighted Tile matrix
     for m in range(h):
         row = []
 
@@ -27,4 +28,17 @@ def labinit(h=11, w=None, start=None):
         tiles.append(row)
 
     lab = Lab(h, w, start, tiles)
+
+    # Add bottom and top walls
+    for n in range(w):
+        lab.tiles[0][n].type = "#"
+        lab.tiles[h - 1][n].type = "#"
+
+    # Add left wall
+    for m in range(h):
+        lab.tiles[m][0].type = "#"
+
+    # Add starting point
+    lab.tiles[start][0].type = " "
+
     return lab

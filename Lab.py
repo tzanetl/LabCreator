@@ -28,11 +28,11 @@ class Lab(object):
 
                 for tile in row:
 
-                    if tile.t is None:
+                    if tile.type is None:
                         s += "N"
 
                     else:
-                        s += tile.t
+                        s += tile.type
 
                 res += s
 

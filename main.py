@@ -9,7 +9,7 @@ def main():
     w = 5
     start = 2
 
-    lab = labinit()
+    lab = labinit(h, w, start)
 
     print(lab)
 
