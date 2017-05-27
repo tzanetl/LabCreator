@@ -3,9 +3,9 @@
 
 class Lab(object):
 
-    def __init__(self, w=None, h=None, start=None, tiles=None):
-        self.w = w
+    def __init__(self, h=None, w=None, start=None, tiles=None):
         self.h = h
+        self.w = w
         self.start = start
         self.tiles = tiles
 
