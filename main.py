@@ -1,7 +1,16 @@
 # Generate a labyrinth using weighted tiles
 
 
+from labutil import labinit
+
+
 def main():
-    m = [[1, 2], [3, 4]]
+    h = 5
+    w = 5
+    start = 2
+
+    lab = labinit()
+
+    print(lab)
 
 main()

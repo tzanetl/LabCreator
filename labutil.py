@@ -7,8 +7,14 @@ from Tile import Tile
 
 
 #Initializes tiles with weights and types
-def labinit(h, w, start):
-    lab = Lab()
+def labinit(h=11, w=None, start=None):
+
+    if w is None:
+        w = 0 + h
+
+    if start is None:
+        start = int(h/2)
+
     tiles = []
 
     for m in range(h):
@@ -20,5 +26,5 @@ def labinit(h, w, start):
 
         tiles.append(row)
 
-    lab.tiles = tiles
+    lab = Lab(h, w, start, tiles)
     return lab

@@ -4,7 +4,7 @@
 class Tile(object):
     def __init__(self, weight=None, type=None):
         self.weight = weight
-        self.type = type
+        self.t = type
 
     def __str__(self):
         s1 = "None"
@@ -13,8 +13,8 @@ class Tile(object):
         if self.weight is not None:
             s1 = self.weight
 
-        if self.type is not None:
-            s2 = self.type
+        if self.t is not None:
+            s2 = self.t
 
         s = "Weight: {0}\n" \
             "Type:  \"{1}\"".format(s1, s2)
