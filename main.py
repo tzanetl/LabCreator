@@ -11,6 +11,6 @@ def main():
 
     lab = labinit(h, w, start)
 
-    print(lab)
+    print(lab.map())
 
 main()

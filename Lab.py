@@ -1,6 +1,5 @@
 # Class for storing the labyrinth
 
-from Tile import Tile
 
 class Lab(object):
 
@@ -40,3 +39,25 @@ class Lab(object):
             res += "\nNo map"
 
         return res
+
+    def map(self):
+
+        if self.tiles is None:
+            return None
+
+        res = ""
+
+        for row in self.tiles:
+            s = ""
+
+            for tile in row:
+
+                if tile.type is None:
+                    s += "N"
+
+                else:
+                    s += tile.type
+
+            res += s + "\n"
+
+        return res.rstrip()
