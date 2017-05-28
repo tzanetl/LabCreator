@@ -6,8 +6,30 @@ from Lab import Lab
 from Tile import Tile
 
 
+# Generate labyrinth
+def labgen(lab):
+
+    for i in range(lab.h * lab.h):
+        least = [lab.maxweight + 1, 0, 0]
+
+        for m in range(lab.h):
+
+            for n in range(lab.w):
+
+                if lab.tiles[m][n].type == " ":
+                    least = lookaround(lab.tiles, least, m, n)
+
+    return lab
+
+
+# Looks around the " " tile for tile weights
+def lookaround(tiles, least, m, n):
+
+    return least
+
+
 # Initializes tiles with weights and types
-def labinit(h=11, w=None, start=None):
+def labinit(h=11, w=None, start=None, maxweight = 10000):
 
     if w is None:
         w = 0 + h
@@ -22,12 +44,12 @@ def labinit(h=11, w=None, start=None):
         row = []
 
         for n in range(w):
-            tile = Tile(randint(1, 100))
+            tile = Tile(randint(1, maxweight))
             row.append(tile)
 
         tiles.append(row)
 
-    lab = Lab(h, w, start, tiles)
+    lab = Lab(h, w, start, maxweight, tiles)
 
     # Add bottom and top walls
     for n in range(w):

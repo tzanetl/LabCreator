@@ -3,10 +3,11 @@
 
 class Lab(object):
 
-    def __init__(self, h=None, w=None, start=None, tiles=None):
+    def __init__(self, h=None, w=None, start=None, maxweight=None, tiles=None):
         self.h = h
         self.w = w
         self.start = start
+        self.maxweight = maxweight
         self.tiles = tiles
 
     def __repr__(self):
