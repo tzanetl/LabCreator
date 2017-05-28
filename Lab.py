@@ -11,15 +11,18 @@ class Lab(object):
         self.tiles = tiles
 
     def __repr__(self):
-        r = "w:     {0}\n" \
-            "h:     {1}\n" \
-            "start: {2}\n" \
-            "tiles: {3}".format(self.w, self.h, self.start, self.tiles)
+        r = "w:         {0}\n" \
+            "h:         {1}\n" \
+            "start:     {2}\n" \
+            "Maxweight: {3}\n" \
+            "tiles:     {4}"\
+                .format(self.w, self.h, self.start, self.maxweight, self.tiles)
         return r
 
     def __str__(self):
 
-        res = "h: {0} | w: {1} | start: {2}".format(self.h, self.w, self.start)
+        res = "h: {0} | w: {1} | start: {2} | maxweight: {3}"\
+            .format(self.h, self.w, self.start, self.maxweight)
 
         if self.tiles is not None:
 
