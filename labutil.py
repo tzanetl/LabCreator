@@ -25,6 +25,13 @@ def labgen(lab):
     return lab
 
 
+# Decides if tile needs to be wall or " "
+def deftype(lab):
+    
+
+    return lab
+
+
 # Looks around the " " tile for tile weights
 def lookaround(lab, least, m, n):
 
