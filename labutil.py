@@ -4,65 +4,64 @@
 from random import randint
 from Lab import Lab
 from Tile import Tile
+from Connection import Connection
 
 
 # Generate labyrinth
 def labgen(lab):
 
     for i in range(lab.h * lab.h):
-        least = [lab.maxweight + 1, 0, 0]
+        con = Connection(0, 0, 0, 0, lab.maxweight + 1)
 
         for m in range(lab.h):
 
             for n in range(lab.w):
 
                 if lab.tiles[m][n].type == " ":
-                    least = lookaround(lab, least, m, n)
+                    con = lookaround(lab, con, m, n)
 
-        if least[0] < lab.maxweight + 1:
-            lab.tiles[least[1]][least[2]].type = " "
+        if con.weight < lab.maxweight:
+            lab.tiles[con.m][con.n].type = " "
 
     return lab
 
 
 # Decides if tile needs to be wall or " "
 def deftype(lab):
-    
+
 
     return lab
 
 
 # Looks around the " " tile for tile weights
-def lookaround(lab, least, m, n):
+def lookaround(lab, con, m, n):
 
     # Look up
     if m - 1 >= 0:
-        least = look(lab.tiles, least, m - 1, n)
+        con = look(lab.tiles, con, m - 1, n, m, n)
 
     # Look down
     if m + 1 < lab.h:
-        least = look(lab.tiles, least, m + 1, n)
+        con = look(lab.tiles, con, m + 1, n, m, n)
 
     # Look left
     if n - 1 >= 0:
-        least = look(lab.tiles, least, m, n - 1)
+        con = look(lab.tiles, con, m, n - 1, m, n)
 
     # Look right
     if n + 1 < lab.w:
-        least = look(lab.tiles, least, m, n + 1)
+        con = look(lab.tiles, con, m, n + 1, m, n)
 
-    return least
+    return con
 
 
 # Checks is Tile.type is None and if its lower weight than current
-def look(tiles, least, m, n):
+def look(tiles, con, m, n, to_m, to_n):
 
-    if tiles[m][n].type is None and tiles[m][n].weight < least[0]:
-        least[0] = tiles[m][n].weight
-        least[1] = m
-        least[2] = n
+    if tiles[m][n].type is None and tiles[m][n].weight < con.weight:
+        con = Connection(m, n, to_m, to_n, tiles[m][n].weight)
 
-    return least
+    return con
 
 
 # Initializes tiles with weights and types
