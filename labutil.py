@@ -26,6 +26,24 @@ def labgen(lab):
     return lab
 
 
+# Decides if tile needs to be wall or " "
+def deftype(lab, con):
+    check = [True in range(9)]
+
+
+    return lab
+
+
+# Looks around the suggested tile for floor
+# check list<bool> = |012|
+#                    |345|
+#                    |678|
+# 4 is the suggested tile
+def lookforfloor(lab, m, n, check):
+    res = False
+
+    return res
+
 # Adds direction to the Conncetion
 def getdir(con):
 
@@ -42,12 +60,6 @@ def getdir(con):
         con.direction = "right"
 
     return con
-
-
-# Decides if tile needs to be wall or " "
-def deftype(lab):
-
-    return lab
 
 
 # Looks around the " " tile for tile weights
