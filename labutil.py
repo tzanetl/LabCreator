@@ -26,9 +26,17 @@ def labgen(lab):
     return lab
 
 
+# Adds direction to the Conncetion
+def getdir(con):
+
+    if con.m > con.to_m:
+        return
+
+    return con
+
+
 # Decides if tile needs to be wall or " "
 def deftype(lab):
-
 
     return lab
 
