@@ -30,7 +30,16 @@ def labgen(lab):
 def getdir(con):
 
     if con.m > con.to_m:
-        return
+        con.direction = "up"
+
+    elif con.m < con.to_m:
+        con.direction = "down"
+
+    elif con.n < con.to_n:
+        con.direction = "left"
+
+    else:
+        con.direction = "right"
 
     return con
 
