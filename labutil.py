@@ -29,7 +29,35 @@ def labgen(lab):
 # Decides if tile needs to be wall or " "
 def deftype(lab, con):
     check = [True in range(9)]
+    check[4] = False # Set middle to False
 
+    if con.direction == "up":
+        check[6] = False
+        check[7] = False
+        check[8] = False
+
+    elif con.direction == "down":
+        check[0] = False
+        check[1] = False
+        check[2] = False
+
+    elif con.direction == "left":
+        check[2] = False
+        check[5] = False
+        check[8] = False
+
+    else:
+        check[0] = False
+        check[3] = False
+        check[6] = False
+
+    res = lookaround(lab, con.m, con.n, check)
+
+    if res is True:
+        lab.tiles[con.m][con.n].type = "#"
+
+    else:
+        lab.tiles[con.m][con.n].type = " "
 
     return lab
 
@@ -39,6 +67,7 @@ def deftype(lab, con):
 #                    |345|
 #                    |678|
 # 4 is the suggested tile
+# Return True if floor was found, else false
 def lookforfloor(lab, m, n, check):
     res = False
 
