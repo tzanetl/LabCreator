@@ -5,9 +5,9 @@ from labutil import labinit, labgen
 
 
 def main():
-    h = 10
-    w = 10
-    start = 2
+    h = 15
+    w = 15
+    start = 6
 
     lab = labinit(h, w, start)
     print(lab, "\n")

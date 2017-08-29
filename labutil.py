@@ -23,7 +23,7 @@ def labgen(lab):
         if con.weight < lab.maxweight:
 
             if con.n == lab.w - 1:
-                for i in range(lab.w):
+                for i in range(lab.h):
                     lab.tiles[i][lab.w - 1].type = "#"
 
                 lab.tiles[con.m][con.n].type = " "
