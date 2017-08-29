@@ -5,12 +5,12 @@ from labutil import labinit, labgen
 
 
 def main():
-    h = 5
-    w = 5
+    h = 10
+    w = 10
     start = 2
 
     lab = labinit(h, w, start)
-    print(lab)
+    print(lab, "\n")
     lab = labgen(lab)
     print(lab.map())
 

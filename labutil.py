@@ -30,6 +30,19 @@ def labgen(lab):
 
             else:
                 lab = deftype(lab, con)
+    lab = finish(lab)
+    return lab
+
+
+#Finishes the labyrinth by removing rest of the None type tiles
+def finish(lab):
+
+    for m in range(1, lab.h - 1):
+
+        for n in range(1, lab.w - 1):
+
+            if lab.tiles[m][n].type is None:
+                lab.tiles[m][n].type = "#"
 
     return lab
 
