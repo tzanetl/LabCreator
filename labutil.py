@@ -21,15 +21,24 @@ def labgen(lab):
                     con = lookaround(lab, con, m, n)
 
         if con.weight < lab.maxweight:
-            lab.tiles[con.m][con.n].type = " "
+
+            if con.n == lab.w - 1:
+                for i in range(lab.w):
+                    lab.tiles[i][lab.w - 1].type = "#"
+
+                lab.tiles[con.m][con.n].type = " "
+
+            else:
+                lab = deftype(lab, con)
 
     return lab
 
 
 # Decides if tile needs to be wall or " "
 def deftype(lab, con):
-    check = [True in range(9)]
+    check = [True for i in range(9)]
     check[4] = False # Set middle to False
+    con = getdir(con)
 
     if con.direction == "up":
         check[6] = False
@@ -51,7 +60,7 @@ def deftype(lab, con):
         check[3] = False
         check[6] = False
 
-    res = lookaround(lab, con.m, con.n, check)
+    res = lookforfloor(lab, con.m, con.n, check)
 
     if res is True:
         lab.tiles[con.m][con.n].type = "#"
@@ -70,6 +79,17 @@ def deftype(lab, con):
 # Return True if floor was found, else false
 def lookforfloor(lab, m, n, check):
     res = False
+    checkcords = [[m - 1, n - 1], [m - 1, n ], [m - 1, n + 1], [m, n - 1], [m, n], [m, n + 1], [m + 1, n - 1],
+                  [m + 1, n], [m + 1, n + 1]]
+
+    for i in range(9):
+
+        if check[i] is True:
+            checkpoint = checkcords[i]
+
+            if lab.tiles[checkpoint[0]][checkpoint[1]].type == " ":
+                res = True
+                return res
 
     return res
 
@@ -77,10 +97,10 @@ def lookforfloor(lab, m, n, check):
 def getdir(con):
 
     if con.m > con.to_m:
-        con.direction = "up"
+        con.direction = "down"
 
     elif con.m < con.to_m:
-        con.direction = "down"
+        con.direction = "up"
 
     elif con.n < con.to_n:
         con.direction = "left"
